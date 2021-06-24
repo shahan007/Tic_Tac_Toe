@@ -1,13 +1,15 @@
 # Tic Tac Toe Game
 mini tic tac toe GUI game built with python using tkinter
 
+#### Clone the repo
+`git clone https://github.com/shahan007/Tic_Tac_Toe`
 
-### Setting up the environment
+#### Set up the environment
 `python -m venv venv`
 
 `source venv/Scripts/activate`
 
 `pip install -r requirements.txt`
 
-### Starting the game
+#### Start the game
 `python run.py`
