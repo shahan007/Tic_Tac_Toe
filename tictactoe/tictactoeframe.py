@@ -55,7 +55,7 @@ class TicTacToeFrame(ttk.Frame):
         self.__buttons = []
         for i in range(9):
             button = ttk.Button(
-                self, text='', style='success.Outline.TButton')  # new config
+                self, text='   ', style='success.Outline.TButton')  # new config
             button.config(
                 command=lambda button=button: self.place_marker(button))
             self.__buttons.append(button)
@@ -209,7 +209,7 @@ class ButtonPanelFrame(ttk.Frame):
         self.__container.update_status(
             text=f'Pending: Player {self.__container.nameMapping[self.__container.player]} Turn')
         for btn in self.__container.play_tiles:
-            btn.config(text='')
+            btn.config(text='   ')
 
     def check_scores(self):
         self.__rootwindow.style.theme_use(themename='yeti')

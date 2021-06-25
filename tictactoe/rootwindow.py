@@ -12,7 +12,7 @@ class RootWindow(tk.Tk):
         self.set_dpi_awareness()
         self.__style = Style(theme='yeti')  # new
         self.__style.master = self
-        self.geometry('300x250')
+        self.geometry('300x300')
         self.columnconfigure(0, weight=1)
         self.rowconfigure(0, weight=1)
         self.__NameRegisterationFrame = NameRegisterationFrame(self)
