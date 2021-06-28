@@ -1,5 +1,5 @@
 # Tic Tac Toe Game
-mini tic tac toe GUI game built with python using tkinter
+mini tic tac toe GUI game built with python using tkinter<br>
 
 #### Clone the repo
 `git clone https://github.com/shahan007/Tic_Tac_Toe`
