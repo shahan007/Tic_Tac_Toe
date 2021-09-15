@@ -1,3 +1,6 @@
+from playsound import playsound
+import threading
+import os
 import tkinter as tk
 from tkinter import ttk
 
@@ -86,6 +89,9 @@ class TicTacToeFrame(ttk.Frame):
         self.__data[row-2][column] = self.__player
         button.config(text=f'{marker}', state=tk.DISABLED)
         self.__ButtonPanelFrame.updateNameBtn.config(state=tk.DISABLED)
+        thread = threading.Thread(target=lambda: self.play_sound(
+            os.path.join(os.path.dirname(__file__), "assets/click_tile.wav")))
+        thread.start()
         if self.check_win():
             self.update_status(
                 text=f'Winner: Player {self.__nameMapping[self.__player]} Won !!! ')
@@ -153,7 +159,9 @@ class TicTacToeFrame(ttk.Frame):
     def state_playBtns(self, state):
         for btn in self.__buttons:
             btn.config(state=state)
-
+            
+    def play_sound(self,path):
+        playsound(path)        
 
 class ButtonPanelFrame(ttk.Frame):
 
