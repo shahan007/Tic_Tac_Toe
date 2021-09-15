@@ -89,8 +89,7 @@ class TicTacToeFrame(ttk.Frame):
         self.__data[row-2][column] = self.__player
         button.config(text=f'{marker}', state=tk.DISABLED)
         self.__ButtonPanelFrame.updateNameBtn.config(state=tk.DISABLED)
-        thread = threading.Thread(target=lambda: self.play_sound(
-            os.path.join(os.path.dirname(__file__), "assets/click_tile.wav")))
+        thread = threading.Thread(target=lambda: self.play_sound("click_tile.wav"))
         thread.start()
         if self.check_win():
             self.update_status(
@@ -98,13 +97,13 @@ class TicTacToeFrame(ttk.Frame):
             self.__scoreMapping[self.__player] += 1
             # switch off everything here disable all
             self.state_playBtns(state=tk.DISABLED)
-            self.__ButtonPanelFrame.playAgainBtn.config(state=tk.NORMAL)
-            self.__ButtonPanelFrame.updateNameBtn.config(state=tk.NORMAL)
+            thread = threading.Thread(target=lambda: self.play_sound("game_won.wav",status=True))
+            thread.start()
         else:
             if self.check_game_over():
                 self.update_status(text=f'DRAW: Good Luck playing next time!')
-                self.__ButtonPanelFrame.playAgainBtn.config(state=tk.NORMAL)
-                self.__ButtonPanelFrame.updateNameBtn.config(state=tk.NORMAL)
+                thread = threading.Thread(target=lambda: self.play_sound("game_draw.wav",status=True))
+                thread.start()                
             else:
                 self.switch_players()
 
@@ -160,9 +159,12 @@ class TicTacToeFrame(ttk.Frame):
         for btn in self.__buttons:
             btn.config(state=state)
             
-    def play_sound(self,path):
-        playsound(path)        
-
+    def play_sound(self,soundFileName,status=False):        
+        playsound(os.path.join(os.path.dirname(__file__), f"assets/{soundFileName}")) 
+        if status:
+            self.__ButtonPanelFrame.playAgainBtn.config(state=tk.NORMAL)
+            self.__ButtonPanelFrame.updateNameBtn.config(state=tk.NORMAL)
+            
 class ButtonPanelFrame(ttk.Frame):
 
     def __init__(self, container, rootwindow):
