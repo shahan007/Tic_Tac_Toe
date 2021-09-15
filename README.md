@@ -2,7 +2,8 @@
 mini tic tac toe GUI game built with python using tkinter<br><br>
 
 ## Built With
-- _Python version 3.8.0_<br><br>
+- _Python version 3.8.0_
+- _(audio from [mixkit](https://mixkit.co/))_ <br><br>
 
 ## How to run ?
 
